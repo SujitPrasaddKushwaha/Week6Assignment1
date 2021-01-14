@@ -33,12 +33,11 @@ class loginPage : AppCompatActivity() {
             }
 
             if (etusername.text.toString() == "sujit" && etpassword.text.toString() == "sujit12345") {
-                startActivity(Intent(this, Dashboard::class.java))
+                startActivity(Intent(this, MainActivity::class.java))
             } else {
                 Toast.makeText(this, "Incorrect credentials. Please retry.", Toast.LENGTH_SHORT)
                     .show()
             }
         }
-
     }
 }

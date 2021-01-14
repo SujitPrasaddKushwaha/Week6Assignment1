@@ -30,11 +30,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Age"
+        android:inputType="number"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:layout_marginBottom="3dp"/>
 
     <RadioGroup
+        android:id="@+id/genderRadio"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -49,6 +51,7 @@
             android:layout_marginTop="10dp"/>
 
         <RadioButton
+            android:id="@+id/gendermale"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Male"
@@ -57,12 +60,14 @@
             />
 
         <RadioButton
+            android:id="@+id/genderfemale"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Female"
             android:textSize="18sp"/>
 
         <RadioButton
+            android:id="@+id/genderothers"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="18sp"
