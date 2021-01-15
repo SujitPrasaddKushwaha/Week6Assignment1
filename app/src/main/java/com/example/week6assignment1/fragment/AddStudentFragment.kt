@@ -22,6 +22,9 @@ class AddStudentFragment : Fragment() {
     private lateinit var genderOthers: RadioButton
     private lateinit var address: EditText
     private lateinit var saveButton: Button
+    private lateinit var  comm : communicator
+
+    private var array = ArrayList<String>()
 
     var genderSelected: String = ""
     var gender: String = ""
@@ -39,25 +42,31 @@ class AddStudentFragment : Fragment() {
 
         binding(view)
         genderSelected = genderSelection()
+        comm = activity as communicator
 
 
-        saveButton.setOnClickListener() {
-            var name = fullname
-            val age = age.text.toString()
-            var address = address.text.toString()
-            var gender = genderSelected
+        saveButton.setOnClickListener(){
+           comm.passDataCom(fullname.text.toString())
 
-            liststudent.add(
-                studentClass(
-                    "https://www.facebook.com/photo/?fbid=1782298345280131&set=a.101177116725604",
-                    "$name", "$age", "$address", "$gender"
-                )
-            )
         }
-        val intent = Intent(context, MainActivity::class.java)
-        intent.putExtra("liststudent", liststudent)
-        startActivity(intent)
 
+//        saveButton.setOnClickListener() {
+//            var name = fullname
+//            val age = age.text.toString()
+//            var address = address.text.toString()
+//            var gender = genderSelected
+//
+//            liststudent.add(
+//                studentClass(
+//                    "https://www.facebook.com/photo/?fbid=1782298345280131&set=a.101177116725604",
+//                    "$name", "$age", "$address", "$gender"
+//                )
+//            )
+//        }
+//        val intent = Intent(context, MainActivity::class.java)
+//        intent.putExtra("liststudent", liststudent)
+//        startActivity(intent)
+//
         return view
     }
 
@@ -93,10 +102,5 @@ class AddStudentFragment : Fragment() {
         address = view.findViewById(R.id.etAddress)
         saveButton = view.findViewById(R.id.btnSave)
     }
-
-//    override fun passDataCom(FullName: String, age: String, gender: String, address: String) {
-//        val bundle = Bundle()
-//        bundle.putString("message", liststudent)
-//    }
 }
 

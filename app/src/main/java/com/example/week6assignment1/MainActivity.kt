@@ -25,7 +25,7 @@ class MainActivity : AppCompatActivity(), communicator {
         bottom_navigation = findViewById(R.id.bottom_navigation)
 
         supportFragmentManager.beginTransaction().apply {
-            replace(R.id.fragment_container,HomeFragment())
+            replace(R.id.fragment_container, HomeFragment())
             commit()
         }
 
@@ -66,9 +66,29 @@ class MainActivity : AppCompatActivity(), communicator {
             true
         }
     }
-    override fun passDataCom(FullName: String, age: String, gender: String, address: String) {
-        val bundle = Bundle()
-        bundle.putStringArrayList("message", liststudent)
 
+    override fun passDataCom(FullName: String) {
+        val bundle = Bundle()
+        bundle.putParcelable("fullname", FullName)
+        val transaction = this.supportFragmentManager.beginTransaction()
+        val frag = HomeFragment()
+        frag.arguments = bundle
+        transaction.replace(R.id.fragment_container,frag)
+        transaction.addToBackStack(null)
+        transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
+        transaction.commit()
     }
+
+//    override fun passDataArray(array: ArrayList<String>) {
+//        val bundle = Bundle()
+//        bundle.putStringArrayList("array", array)
+//        val transaction = this.supportFragmentManager.beginTransaction()
+//        val frag = HomeFragment()
+//        frag.arguments = bundle
+//        transaction.replace(R.id.fragment_container,frag)
+//        transaction.addToBackStack(null)
+//        transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
+//        transaction.commit()
+//
+//    }
 }
